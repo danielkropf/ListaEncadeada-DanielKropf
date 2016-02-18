@@ -69,5 +69,53 @@ namespace _2015_3003_1BIM_ListaEncadeada
 				x.Proximo = elemento.Proximo;
 			}
 		}
+
+		private void TrocarElementosAB(object sender, EventArgs e)
+		{
+			Elemento a = lista.BuscaX(Convert.ToInt32(NumericA.Value));
+			Elemento aProx = a.Proximo;
+			Elemento aPrev = lista.BuscaX(Convert.ToInt32(NumericA.Value) - 1);
+			Elemento b = lista.BuscaX(Convert.ToInt32(NumericB.Value));
+			Elemento bProx = b.Proximo;
+			Elemento bPrev = lista.BuscaX(Convert.ToInt32(NumericB.Value) - 1);
+
+			if (NumericA.Value < NumericB.Value)
+			{
+				if (NumericA.Value - NumericB.Value == 1 || NumericB.Value - NumericA.Value == 1)
+				{
+
+					aPrev.Proximo = b;
+					a.Proximo = b.Proximo;
+					b.Proximo = a;
+
+				}
+				else
+				{
+					aPrev.Proximo = b;
+					b.Proximo = aProx;
+					bPrev.Proximo = a;
+					a.Proximo = bProx;
+				}
+			}
+			else if (NumericA.Value > NumericB.Value)
+			{
+				if (NumericB.Value - NumericA.Value == 1 || NumericA.Value - NumericB.Value == 1)
+				{
+
+					bPrev.Proximo = a;
+					b.Proximo = a.Proximo;
+					a.Proximo = b;
+
+				}
+				else
+				{
+					bPrev.Proximo = a;
+					a.Proximo = bProx;
+					aPrev.Proximo = b;
+					b.Proximo = aProx;
+				}
+			}
+
+		}
     }
 }

@@ -196,6 +196,7 @@
 			this.button7.TabIndex = 12;
 			this.button7.Text = "Trocar Elemento A por Elemento B";
 			this.button7.UseVisualStyleBackColor = false;
+			this.button7.Click += new System.EventHandler(this.TrocarElementosAB);
 			// 
 			// NumericB
 			// 
