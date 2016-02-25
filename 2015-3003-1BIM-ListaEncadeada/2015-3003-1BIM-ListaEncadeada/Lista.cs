@@ -47,16 +47,6 @@ namespace _2015_3003_1BIM_ListaEncadeada
             }
         }
 
-        public Elemento BuscaUltimo()
-        {
-            Elemento current = Primeiro;
-            while (current.Proximo != null)
-            {
-                current = current.Proximo;
-            }
-            return current;
-        }
-
         public int Count
         {
             get {
@@ -80,5 +70,49 @@ namespace _2015_3003_1BIM_ListaEncadeada
                 current = current.Proximo;
             } 
         }
+
+        public Elemento BuscaUltimo()
+        {
+            Elemento current = Primeiro;
+            while (current.Proximo != null)
+            {
+                current = current.Proximo;
+            }
+            return current;
+        }
+
+        public Elemento BuscaX(int x) 
+        {
+            Elemento current = Primeiro;
+            int count = 0;
+            while (count < x)
+            {
+                current = current.Proximo;
+                count++;
+            }
+            return current;
+        }
+
+        public Elemento BuscaByValor(int x)
+        {
+            Elemento current = Primeiro;
+            while (current.Valor != x)
+            {
+                current = current.Proximo;
+            }
+            return current;
+        }
+
+		public int getPos(Elemento x)
+		{
+			Elemento current = Primeiro;
+			int count = 0;
+			while (current != x)
+			{
+				current = current.Proximo;
+				count++;
+			}
+			return count;
+		}
     }
 }
