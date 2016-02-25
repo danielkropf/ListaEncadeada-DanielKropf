@@ -50,7 +50,7 @@ namespace _2015_3003_1BIM_ListaEncadeada
         public int Count
         {
             get {
-                int count = 1;
+                int count = 0;
                 Elemento current = Primeiro;
                 while (current != null)
                 {
@@ -61,12 +61,13 @@ namespace _2015_3003_1BIM_ListaEncadeada
             }
         }
 
-        public void ImprimeLista()
+        public void ImprimeLista(System.Windows.Forms.ListBox x)
         {
             Elemento current = Primeiro;
+			x.Items.Clear();
             while (current != null)
             {
-                Debug.WriteLine(current.AsString);
+                x.Items.Add("[" + this.getPos(current) + "]: " + current.AsString);
                 current = current.Proximo;
             } 
         }

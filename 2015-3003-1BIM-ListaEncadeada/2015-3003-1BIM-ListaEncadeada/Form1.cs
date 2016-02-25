@@ -19,20 +19,38 @@ namespace _2015_3003_1BIM_ListaEncadeada
             InitializeComponent();
         }
 
+		private void loadNumerics() 
+		{
+			numeric1.Maximum = lista.Count - 1;
+			numeric2.Maximum = lista.Count - 1;
+			numeric3.Maximum = lista.Count - 1;
+			numeric4.Maximum = lista.Count - 1;
+			numeric5.Maximum = lista.Count - 1;
+
+			numeric1.Minimum = 0;
+			numeric2.Minimum = 0;
+			numeric3.Minimum = 0;
+			numeric4.Minimum = 0;
+			numeric5.Minimum = 0;
+		}
+
         private void CarregarPrograma(object sender, EventArgs e)
         {
             lista = new Lista();
+			loadNumerics();
         }
 
         private void InicializarLista(object sender, EventArgs e)
         {
             Elemento elemento = new Elemento(lista.Count);
             lista.Adiciona(elemento);
+			loadNumerics();
         }
 
         private void ExibirLista(object sender, EventArgs e)
         {
-            lista.ImprimeLista();
+            lista.ImprimeLista(listBox1);
+			loadNumerics();
         }
 
 		private void AdicionaElemento(object sender, EventArgs e)
@@ -41,6 +59,7 @@ namespace _2015_3003_1BIM_ListaEncadeada
 			//r.Next(1,100) + (2 * DateTime.Now.Second)
 			Elemento elemento = new Elemento(lista.Count);
 			lista.Adiciona(elemento);
+			loadNumerics();
 		}
 
 		private void AdicionarElementoXPos(object sender, EventArgs e)
@@ -49,6 +68,7 @@ namespace _2015_3003_1BIM_ListaEncadeada
 			Elemento prev = lista.BuscaX((Convert.ToInt32(numeric1.Value)) - 1);
 			prev.Proximo = null;
 			lista.Adiciona(elemento);
+			loadNumerics();
 		}
 
 		private void AdicionarElementoAposXValor(object sender, EventArgs e)
@@ -56,7 +76,7 @@ namespace _2015_3003_1BIM_ListaEncadeada
 			Elemento elemento = new Elemento(lista.Count, (lista.BuscaByValor(Convert.ToInt32(numeric2.Value))).Proximo);
 			lista.BuscaByValor(Convert.ToInt32(numeric2.Value)).Proximo = null;
 			lista.Adiciona(elemento);
-
+			loadNumerics();
 		}
 
 		private void TrocarPosXPosY(object sender, EventArgs e)
@@ -102,6 +122,7 @@ namespace _2015_3003_1BIM_ListaEncadeada
 				}
 				
 			}
+			loadNumerics();
 
 		}
 
@@ -117,6 +138,7 @@ namespace _2015_3003_1BIM_ListaEncadeada
 				Elemento x = lista.BuscaByValor(Convert.ToInt32(numeric5.Value));
 				lista.BuscaX(lista.getPos(x) - 1).Proximo = x.Proximo;
 			}
+			loadNumerics();
 		}
     }
 }
